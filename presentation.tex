@@ -1,0 +1,183 @@
+\documentclass{beamer}
+
+\usetheme{Madrid}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usetikzlibrary{quantikz}
+\usepackage{lineno}
+
+\title{Quantum Computing and Cryptography}
+\author{Damien, Théo, Matthieu}
+\institute{University}
+\date{February 12, 2025}
+
+\begin{document}
+
+\begin{frame}
+\maketitle
+\end{frame}
+
+\begin{frame}{Outline}
+\tableofcontents
+\end{frame}
+
+\section{Intro}
+\begin{frame}{Introduction}
+\begin{linenumbers}
+
+\end{linenumbers}
+\end{frame}
+
+\section{RSA}
+\begin{frame}{RSA}
+\begin{linenumbers}
+
+\end{linenumbers}
+\end{frame}
+
+\section{Quantique}
+
+\subsection{Introduction au quantique}
+\subsubsection{Qubits}
+\begin{frame}{Qubits}
+\begin{linenumbers}
+    \begin{itemize}[<+->]
+        \item Classical bit $\rightarrow$ 0 or 1
+        \item Qubit $\rightarrow$ vector $\in \mathbb{C}^2$
+        \item $\bra0 = \begin{bsmallmatrix} 1 & 0\end{bsmallmatrix}$
+        \item $\bra1 = \begin{bsmallmatrix} 0 & 1\end{bsmallmatrix}$
+        \item $\bra+ = \frac{1}{\sqrt{2}}\begin{bsmallmatrix} 1 & 1\end{bsmallmatrix}$
+        \item $\bra- = \frac{1}{\sqrt{2}}\begin{bsmallmatrix} 1 & -1\end{bsmallmatrix}$
+    \end{itemize}
+\end{linenumbers}
+\end{frame}
+
+\subsubsection{Mesures}
+\begin{frame}{Mesures}
+\begin{linenumbers}
+  \begin{itemize}[<+->]
+    \item $\bra0$ => 0 (100\%)
+    \item $\bra1$ => 1 (100\%)
+    \item $\bra+$ => 0 (50\%), 1 (50\%)
+    \item $\bra-$ => 0 (50\%), 1 (50\%)
+  \end{itemize}
+\end{linenumbers}
+\end{frame}
+
+\subsubsection{Gates}
+\begin{frame}{Gates - Slide 1}
+\begin{linenumbers}
+    \begin{itemize}[<+->]
+        \item Gate $X$
+        \begin{itemize}
+            \item $X\ket{0} \rightarrow \ket{1}$
+            \item $X\ket{1} \rightarrow \ket{0}$
+        \end{itemize}
+        \item Circuit
+        \begin{quantikz}
+            \lstick{$\ket{0}$} & \gate{X} & \meter{}
+        \end{quantikz}
+    \end{itemize}
+\end{linenumbers}
+\end{frame}
+
+\begin{frame}{Gates - Slide 2}
+\begin{linenumbers}
+    \begin{itemize}[<+->]
+        \item Gate $H$
+        \begin{itemize}
+            \item $H\ket{0} \rightarrow \ket{+}$
+            \item $H\ket{1} \rightarrow \ket{-}$
+        \end{itemize}
+        \item Circuit
+        \begin{quantikz}
+            \lstick{$\ket{0}$} & \gate{H} & \meter{}
+        \end{quantikz}
+    \end{itemize}
+\end{linenumbers}
+\end{frame}
+
+\subsection{Algorithmes quantique}
+\subsubsection{Problème B.V}
+\begin{frame}{Problème B.V}
+\begin{linenumbers}
+Given the oracle of a function $f$ :
+
+$f : \{0, 1\}^n \rightarrow \{0, 1\}$
+$f(x) = x\cdot s$
+
+Find $s$ in the few request possible.
+\end{linenumbers}
+\end{frame}
+
+\subsubsection{Algo classique}
+\begin{frame}{Algo classique - Slide 1}
+\begin{linenumbers}
+with $n=2$
+try :
+\begin{itemize}[<+->]
+    \item $f(10) = s_0$
+    \item $f(01) = s_1$
+\end{itemize}
+
+2 requests.
+\end{linenumbers}
+\end{frame}
+
+\begin{frame}{Algo classique - Slide 2}
+\begin{linenumbers}
+in general :
+$\mathcal{O}(n)$ $\rightarrow$ Try every $x$ that contains one bit to 1. At each query, we get the value of that bit in s
+\end{linenumbers}
+\end{frame}
+
+\subsubsection{Algo Quantique}
+\begin{frame}{Algo Quantique - Slide 1}
+\begin{linenumbers}
+$\mathcal{O}(1)$ $\rightarrow$ Just try every $x$ at the same time.
+
+Not only the $x$ with only one bit at one but every possible $x$.
+\end{linenumbers}
+\end{frame}
+
+\begin{frame}{Algo Quantique - Slide 2}
+\begin{linenumbers}
+\begin{quantikz}
+    \lstick{$\ket{0}$} & \gate{H} & \qw & \qw & \gate{H} & \meter{} \\
+    \lstick{$\ket{0}$} & \gate{H} & \ctrl{-1} & \gate{H} & \qw & \meter{}
+\end{quantikz}
+\end{linenumbers}
+\end{frame}
+
+\subsubsection{Shor}
+\begin{frame}{Shor}
+\begin{linenumbers}
+    \begin{itemize}[<+->]
+        \item Gain de complexité :
+        $\mathcal O(e^b)$ $\rightarrow$ $\mathcal O(b³)$
+        \item combien de qubit il faut
+        \item combien de cubit on as
+    \end{itemize}
+\end{linenumbers}
+\end{frame}
+
+\section{Post-Quantique}
+\begin{frame}{Post-quantique}
+\begin{linenumbers}
+
+\end{linenumbers}
+\end{frame}
+
+\section{Conclusion}
+\begin{frame}{Conclusion}
+\begin{linenumbers}
+    % Content from brouillon.md - To be filled
+\end{linenumbers}
+\end{frame}
+
+\end{document}
