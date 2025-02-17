@@ -196,14 +196,59 @@ Not only the $x$ with only one bit at one but every possible $x$.
 \end{frame}
 
 \subsection{Lattice cryptography}
-\begin{frame}{What is a lattice ?}
+\begin{frame}{What is a lattice ?}[scale=0.5]
+	A discret subgroup of $RR^n$
 	\begin{tikzpicture}
-		\foreach \i in {1, ..., 8} {
-			\draw [gray, thick] (\i, 0.5) -- (\i, 8.5);
+		\foreach \i in {1, ..., 8, 1.5, ..., 7.5} {
+			\draw [gray, thick] (\i, 0.75) -- (\i, 8.25);
 		}
-		\foreach \i in {1, ..., 8} {
-			\draw [gray, thick] (0.5, \i) -- (8.5, \i);
+		\foreach \i in {1, ..., 8, 1.5, ..., 7.5} {
+			\draw [gray, thick] (0.75, \i) -- (8.25, \i);
 		}
+
+		\filldraw[black] (8, 1) circle (2pt);
+
+		\filldraw[black] (7, 1.5) circle (2pt);
+
+		\filldraw[black] (4.5, 1) circle (2pt);
+		\filldraw[black] (6, 2) circle (2pt); % end
+		\filldraw[black] (7.5, 3) circle (2pt);
+
+		\filldraw[black] (3.5, 1.5) circle (2pt);
+		\filldraw[black] (5, 2.5) circle (2pt);
+		\filldraw[black] (6.5, 3.5) circle (2pt); % end
+		\filldraw[black] (8, 4.5) circle (2pt);
+
+		\filldraw[black] (1, 1) circle (2pt) node[anchor=west]{$O$}; % beg
+		\filldraw[black] (2.5, 2) circle (2pt);
+		\filldraw[black] (4, 3) circle (2pt);
+		\filldraw[black] (5.5, 4) circle (2pt);
+		\filldraw[black] (7, 5) circle (2pt); % end
+
+		\filldraw[black] (1.5, 2.5) circle (2pt); % beg
+		\filldraw[black] (3, 3.5) circle (2pt);
+		\filldraw[black] (4.5, 4.5) circle (2pt);
+		\filldraw[black] (6, 5.5) circle (2pt);
+		\filldraw[black] (7.5, 6.5) circle (2pt); % end
+
+		\filldraw[black] (2, 4) circle (2pt); % beg
+		\filldraw[black] (3.5, 5) circle (2pt);
+		\filldraw[black] (5, 6) circle (2pt);
+		\filldraw[black] (6.5, 7) circle (2pt);
+		\filldraw[black] (8, 8) circle (2pt); % end
+
+		\filldraw[black] (1, 4.5) circle (2pt);
+		\filldraw[black] (2.5, 5.5) circle (2pt); % beg
+		\filldraw[black] (4, 6.5) circle (2pt);
+		\filldraw[black] (5.5, 7.5) circle (2pt);
+
+		\filldraw[black] (1.5, 6) circle (2pt);
+		\filldraw[black] (3, 7) circle (2pt);  % beg
+		\filldraw[black] (4.5, 8) circle (2pt);
+
+		\filldraw[black] (2, 7.5) circle (2pt);
+
+		\filldraw[black] (1, 8) circle(2pt);
 	\end{tikzpicture}
 \end{frame}
 
