@@ -29,7 +29,10 @@
 \section{Intro}
 \begin{frame}{Introduction}
 \begin{linenumbers}
-
+	\begin{itemize}
+		\item Cryptography=TODO
+		\item[$\leftarrow$] Science of secret
+	\end{itemize}
 \end{linenumbers}
 \end{frame}
 
@@ -166,11 +169,66 @@ Not only the $x$ with only one bit at one but every possible $x$.
 \end{linenumbers}
 \end{frame}
 
-\section{Post-Quantique}
-\begin{frame}{Post-quantique}
+\section{Post-Quantum cryptography}
+\subsection{Intro to PQ cryptography}
+\begin{frame}{What is PQ cryptography}
 \begin{linenumbers}
+	\begin{itemize}
+		\item Based on (other) mathematical problems
+		\item Considered unsolvable by a quantum computer
+	\end{itemize}
 
+	What it is not :
+	\begin{itemize}
+		\item Cryptography \textbf{using} quantum technologies
+	\end{itemize}
 \end{linenumbers}
+\end{frame}
+
+\begin{frame}{The problems}
+	\begin{itemize}
+		\item Codes
+		\item Hash functions
+		\item Multivariates polynomials systems
+		\item Isogenies
+		\item Lattices
+	\end{itemize}
+\end{frame}
+
+\subsection{Lattice cryptography}
+\begin{frame}{What is a lattice ?}
+	\begin{tikzpicture}
+		\foreach \i in {1, ..., 8} {
+			\draw [gray, thick] (\i, 0.5) -- (\i, 8.5);
+		}
+		\foreach \i in {1, ..., 8} {
+			\draw [gray, thick] (0.5, \i) -- (8.5, \i);
+		}
+	\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Learning with error problem}
+	TODO
+\end{frame}
+
+\begin{frame}{(Fully) homomorphic encryption}
+	TODO
+\end{frame}
+
+\subsection{Limits of PQ cryptography}
+\begin{frame}
+	Size
+	\begin{tabular}{|c|c|}
+		\hline
+		TODO & \\
+		\hline
+	\end{tabular}
+\end{frame}
+
+\begin{frame}{Not necessarly robust to classical computer}
+	\begin{itemize}
+		\item Example : Supersingular isogenies Diffie-Hellman key exchange
+	\end{itemize}
 \end{frame}
 
 \section{Conclusion}
