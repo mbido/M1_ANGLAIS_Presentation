@@ -10,6 +10,7 @@
 \usepackage{tikz}
 \usetikzlibrary{quantikz}
 \usepackage{lineno}
+\usepackage{multirow}
 
 \title{Quantum Computing and Cryptography}
 \author{Damien, Théo, Matthieu}
@@ -31,7 +32,8 @@
 \begin{linenumbers}
 	\begin{itemize}
 		\item Cryptography=TODO
-		\item[$\leftarrow$] Science of secret
+		\item TODO: secret
+		\item<2->[$\rightarrow$] Science of secret
 	\end{itemize}
 \end{linenumbers}
 \end{frame}
@@ -191,14 +193,53 @@ Not only the $x$ with only one bit at one but every possible $x$.
 		\item Hash functions
 		\item Multivariates polynomials systems
 		\item Isogenies
-		\item Lattices
+		\item {\color<2>{red} Lattices}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Why lattices ?}
+	\begin{itemize}
+		\item Well spread
+		\item Good results
+			\begin{table}[h!]
+			\begin{tabular}{|c|c|}
+				\hline
+				\multicolumn{2}{|c|}{Encryption/Key encapsulation} \\
+				\hline
+				Crystals-Kyber & Lattices \\
+				\hline
+				\multicolumn{2}{|c|}{Signatures} \\
+				\hline
+				Crystals-Dilithium & Lattices \\
+				Falcon & Lattices \\
+				Sphincs+ & Hash \\
+				\hline
+			\end{tabular}
+			\end{table}
 	\end{itemize}
 \end{frame}
 
 \subsection{Lattice cryptography}
-\begin{frame}{What is a lattice ?}[scale=0.5]
-	A discret subgroup of $RR^n$
-	\begin{tikzpicture}
+\begin{frame}{What is a lattice ?}
+	\begin{linenumbers}
+		\begin{itemize}
+			\item A discret subgroup of $RR^n$
+		\end{itemize}
+
+		abc akpqzsfkeokf  akozckdp kpzqkfs pkzapqfkpkde pzkpkd czqks qkp kfsdkvoesd, okpze kswkw k
+	\end{linenumbers}
+
+	Like vector spaces, we have :
+	\begin{itemize}
+		\item Vectors and matrices
+		\item Linear combination
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{What is a lattice ? (cont'd)}
+	\begin{columns}[t]
+	\begin {column}{0.5\textwidth}
+		\begin{tikzpicture}
 		\foreach \i in {1, ..., 8, 1.5, ..., 7.5} {
 			\draw [gray, thick] (\i, 0.75) -- (\i, 8.25);
 		}
@@ -206,6 +247,11 @@ Not only the $x$ with only one bit at one but every possible $x$.
 			\draw [gray, thick] (0.75, \i) -- (8.25, \i);
 		}
 
+		%%% Basis
+		\draw[ultra thick, blue, arrows={-{Latex[length=2.5mm]}}] (2.5, 2) -- (4, 3);
+		\draw[ultra thick, blue, arrows={-{Latex[length=2.5mm]}}] (2.5, 2) -- (1.5, 2.5);
+
+		%%% The lattice's points
 		\filldraw[black] (8, 1) circle (2pt);
 
 		\filldraw[black] (7, 1.5) circle (2pt);
@@ -219,8 +265,8 @@ Not only the $x$ with only one bit at one but every possible $x$.
 		\filldraw[black] (6.5, 3.5) circle (2pt); % end
 		\filldraw[black] (8, 4.5) circle (2pt);
 
-		\filldraw[black] (1, 1) circle (2pt) node[anchor=west]{$O$}; % beg
-		\filldraw[black] (2.5, 2) circle (2pt);
+		\filldraw[black] (1, 1) circle (2pt); % beg
+		\filldraw[black] (2.5, 2) circle (2pt) node[anchor=west]{$O$};
 		\filldraw[black] (4, 3) circle (2pt);
 		\filldraw[black] (5.5, 4) circle (2pt);
 		\filldraw[black] (7, 5) circle (2pt); % end
@@ -249,7 +295,14 @@ Not only the $x$ with only one bit at one but every possible $x$.
 		\filldraw[black] (2, 7.5) circle (2pt);
 
 		\filldraw[black] (1, 8) circle(2pt);
-	\end{tikzpicture}
+		\end{tikzpicture}
+	\end{column}
+	\begin{column}{0.45\textwidth}
+		FIXME : Basis:
+
+		\[\left\{\left(\begin{matrix}3\\2\end{matrix}\right), \left(\begin{matrix}-2\\1\end{matrix}\right)\right\}\]
+	\end{column}
+	\end{columns}
 \end{frame}
 
 \begin{frame}{Learning with error problem}
