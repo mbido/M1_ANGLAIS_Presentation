@@ -121,36 +121,36 @@
 \end{frame}
 
 \subsubsection*{Gates}
-\begin{frame}{Gates - Slide 1}
+\begin{frame}{NOT gate}
 \begin{linenumbers}
-    \begin{itemize}[<+->]
-        \item Gate $X$
-        \begin{itemize}
-            \item $X\ket{0} \rightarrow \ket{1}$
-            \item $X\ket{1} \rightarrow \ket{0}$
-        \end{itemize}
-        \item Circuit
-        \begin{quantikz}
-            \lstick{$\ket{0}$} & \gate{X} & \meter{}
-        \end{quantikz}
-    \end{itemize}
+    \begin{block}<+->{X gate}
+			\begin{itemize}
+					\item $X\ket{0} \rightarrow \ket{1}$
+					\item $X\ket{1} \rightarrow \ket{0}$
+			\end{itemize}
+		\end{block}
+		\begin{block}<+->{Circuit representation}
+			\centering
+			\begin{quantikz}
+				\lstick{$\ket{\psi}$} & \gate{X} & \meter{}
+			\end{quantikz}
+    \end{block}
 \end{linenumbers}
 \end{frame}
 
-\begin{frame}{Gates - Slide 2}
-\begin{linenumbers}
-    \begin{itemize}[<+->]
-        \item Gate $H$
-        \begin{itemize}
-            \item $H\ket{0} \rightarrow \ket{+}$
-            \item $H\ket{1} \rightarrow \ket{-}$
-        \end{itemize}
-        \item Circuit
-        \begin{quantikz}
-            \lstick{$\ket{0}$} & \gate{H} & \meter{}
-        \end{quantikz}
-    \end{itemize}
-\end{linenumbers}
+\begin{frame}{Hadamard gate}
+	\begin{block}<+->{H gate}
+			\begin{itemize}
+					\item $H\ket{0} \rightarrow \ket{+}$
+					\item $H\ket{1} \rightarrow \ket{-}$
+			\end{itemize}
+	\end{block}
+	\begin{block}<+->{Circuit representation}
+			\centering
+			\begin{quantikz}
+					\lstick{$\ket{\psi}$} & \gate{H} & \meter{}
+			\end{quantikz}
+	\end{block}
 \end{frame}
 
 \subsection{Quantum algorithms}
