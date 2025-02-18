@@ -61,6 +61,11 @@
   \tableofcontents[currentsection]
 \end{frame}
 
+\begin{frame}{Quantum computing}
+	\centering
+	\includegraphics[width=0.8\textwidth]{classical-vs-quantum.png}
+\end{frame}
+
 \subsection{Introduction to the quantum world}
 \begin{frame}
   \frametitle{Outline}
@@ -97,16 +102,22 @@
 \end{frame}
 
 
-\subsubsection*{Mesures}
-\begin{frame}{Mesures}
-\begin{linenumbers}
-  \begin{itemize}[<+->]
-    \item $\bra0$ => 0 (100\%)
-    \item $\bra1$ => 1 (100\%)
-    \item $\bra+$ => 0 (50\%), 1 (50\%)
-    \item $\bra-$ => 0 (50\%), 1 (50\%)
-  \end{itemize}
-\end{linenumbers}
+\subsubsection*{Measurements}
+\begin{frame}{Measurements}
+	\begin{linenumbers}
+		\begin{block}<+->{Why measuring ?}
+			We cannot read superposition. When we look at a qubit, it collapses to a classical bit.
+		\end{block}
+		\begin{block}<+->{What do we get ?}
+			We measure $0$ or $1$ with a probability that depends on the state of the qubit.
+			\begin{itemize}[<+->]
+				\item $\ket{0}$ $\rightarrow 0$ (100\%)
+				\item $\ket{1}$ $\rightarrow 1$ (100\%)
+				\item $\ket{+}$ $\rightarrow 0$ (50\%), $1$ (50\%)
+				\item $\ket{-}$ $\rightarrow 0$ (50\%), $1$ (50\%)
+			\end{itemize}
+		\end{block}
+	\end{linenumbers}
 \end{frame}
 
 \subsubsection*{Gates}
