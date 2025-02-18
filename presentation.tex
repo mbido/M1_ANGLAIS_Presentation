@@ -286,14 +286,11 @@ Not only the $x$ with only one bit at one but every possible $x$.
   \tableofcontents[currentsection,currentsubsection]
 \end{frame}
 
-\begin{frame}{What is a lattice ?}
-	\begin{linenumbers}
-		\begin{itemize}
-			\item A discret subgroup of $RR^n$
-		\end{itemize}
-
-		abc akpqzsfkeokf  akozckdp kpzqkfs pkzapqfkpkde pzkpkd czqks qkp kfsdkvoesd, okpze kswkw k
-	\end{linenumbers}
+\subsubsection{What is a lattice ?}
+\begin{frame}{Some definitions}
+	\begin{itemize}
+		\item A discret subgroup of $RR^n$
+	\end{itemize}
 
 	Like vector spaces, we have :
 	\begin{itemize}
@@ -302,7 +299,7 @@ Not only the $x$ with only one bit at one but every possible $x$.
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{What is a lattice ? (cont'd)}
+\begin{frame}{Example}
 	\begin{columns}[t]
 	\begin {column}{0.5\textwidth}
 		\begin{tikzpicture}
@@ -376,7 +373,14 @@ Not only the $x$ with only one bit at one but every possible $x$.
 \end{frame}
 
 \begin{frame}{(Fully) homomorphic encryption}
-	TODO
+	\begin{itemize}
+		\item Based on lattices (variant of LWE problem)
+		\item<2-> We can evaluate a circuit (operations) on encrypted data
+		\item<2-> Two operations : $+$ and $\cdot$, forms a ring
+		\item<3-> We can evaluate (or compile) a function $f : P \times P \rightarrow P$ on encrypted data $C_1$ and $C_2$ :
+			\[eval(f, C_1, C_2) = Enc(f(Dec(C_1), Dec(C_2)))\]
+		\item<4-> Used to manipulate private data (e.g. Medical data, data science)
+	\end{itemize}
 \end{frame}
 
 \subsection{Limits of PQ cryptography}
@@ -384,8 +388,7 @@ Not only the $x$ with only one bit at one but every possible $x$.
   \frametitle{Outline}
   \tableofcontents[currentsection,currentsubsection]
 \end{frame}
-\begin{frame}
-	Size
+\begin{frame}{Sizes of the keys and data}
 	\begin{tabular}{|c|c|}
 		\hline
 		TODO & \\
