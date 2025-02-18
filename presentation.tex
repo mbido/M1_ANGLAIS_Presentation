@@ -45,24 +45,40 @@
 \end{linenumbers}
 \end{frame}
 
-\section{Quantique}
+\section{Quantum computing}
 
-\subsection{Introduction au quantique}
-\subsubsection{Qubits}
+\subsection{Introduction to the quantum world}
+\subsubsection*{Qubits}
 \begin{frame}{Qubits}
 \begin{linenumbers}
-    \begin{itemize}[<+->]
-        \item Classical bit $\rightarrow$ 0 or 1
-        \item Qubit $\rightarrow$ vector $\in \mathbb{C}^2$
-        \item $\bra0 = \begin{bsmallmatrix} 1 & 0\end{bsmallmatrix}$
-        \item $\bra1 = \begin{bsmallmatrix} 0 & 1\end{bsmallmatrix}$
-        \item $\bra+ = \frac{1}{\sqrt{2}}\begin{bsmallmatrix} 1 & 1\end{bsmallmatrix}$
-        \item $\bra- = \frac{1}{\sqrt{2}}\begin{bsmallmatrix} 1 & -1\end{bsmallmatrix}$
-    \end{itemize}
+	\begin{block}<+->{Classical bit}
+		$b \in \{0, 1\}$
+		\begin{itemize}[<+->]
+			\item $0$
+			\item $1$
+		\end{itemize}
+	\end{block}
+
+	\begin{block}<+->{Quantum bit}
+		$\ket{\psi} \in \mathbb{C}^2$
+		\begin{columns}[T,onlytextwidth]
+			\column{0.5\textwidth}
+				\begin{itemize}[<+->]
+					\item $\ket{0} = \begin{bmatrix} 1 \\ 0 \end{bmatrix}$
+					\item $\ket{1} = \begin{bmatrix} 0 \\ 1 \end{bmatrix}$
+				\end{itemize}
+			\column{0.5\textwidth}
+				\begin{itemize}[<+->]
+					\item $\ket{+} = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 \\ 1 \end{bmatrix}$
+					\item $\ket{-} = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 \\ -1 \end{bmatrix}$
+				\end{itemize}
+		\end{columns}
+	\end{block}
 \end{linenumbers}
 \end{frame}
 
-\subsubsection{Mesures}
+
+\subsubsection*{Mesures}
 \begin{frame}{Mesures}
 \begin{linenumbers}
   \begin{itemize}[<+->]
@@ -74,7 +90,7 @@
 \end{linenumbers}
 \end{frame}
 
-\subsubsection{Gates}
+\subsubsection*{Gates}
 \begin{frame}{Gates - Slide 1}
 \begin{linenumbers}
     \begin{itemize}[<+->]
@@ -107,8 +123,8 @@
 \end{linenumbers}
 \end{frame}
 
-\subsection{Algorithmes quantique}
-\subsubsection{Problème B.V}
+\subsection{Quantum algorithms}
+\subsubsection*{Problème B.V}
 \begin{frame}{Problème B.V}
 \begin{linenumbers}
 Given the oracle of a function $f$ :
@@ -120,7 +136,7 @@ Find $s$ in the few request possible.
 \end{linenumbers}
 \end{frame}
 
-\subsubsection{Algo classique}
+\subsubsection*{Algo classique}
 \begin{frame}{Algo classique - Slide 1}
 \begin{linenumbers}
 with $n=2$
@@ -141,7 +157,7 @@ $\mathcal{O}(n)$ $\rightarrow$ Try every $x$ that contains one bit to 1. At each
 \end{linenumbers}
 \end{frame}
 
-\subsubsection{Algo Quantique}
+\subsubsection*{Algo Quantique}
 \begin{frame}{Algo Quantique - Slide 1}
 \begin{linenumbers}
 $\mathcal{O}(1)$ $\rightarrow$ Just try every $x$ at the same time.
@@ -159,7 +175,7 @@ Not only the $x$ with only one bit at one but every possible $x$.
 \end{linenumbers}
 \end{frame}
 
-\subsubsection{Shor}
+\subsubsection*{Shor}
 \begin{frame}{Shor}
 \begin{linenumbers}
     \begin{itemize}[<+->]
