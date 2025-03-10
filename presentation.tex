@@ -204,7 +204,7 @@
 \begin{frame}{Quantum Algorithm - Overview}
 \begin{linenumbers}
 	\begin{block}<+->{Complexity: $\mathcal{O}(1)$}
-		The quantum algorithm can find $\mathbf{s}$ with just *one* query.  It uses superposition to query all possible inputs simultaneously.
+		The quantum algorithm can find $\mathbf{s}$ with just \textbf{one} query.  It uses superposition to query all possible inputs simultaneously.
 	\end{block}
 \end{linenumbers}
 \end{frame}
@@ -214,13 +214,13 @@
 		\begin{block}<+->{Circuit Diagram}
 			\centering
 			\begin{quantikz}
-				\lstick{} & \gate{H} & \gate[2]{U_f} & \gate{H} & \meter{} & \qw \\
-				\lstick{} & \gate{H} &               & \gate{H} & \meter{} & \qw
+				\lstick{} & \ket{0} & \gate{H} & \gate[2]{U_f} & \gate{H} & \meter{} & \qw \\
+				\lstick{} & \ket{0} & \gate{H} &               & \gate{H} & \meter{} & \qw
 				\end{quantikz}
 		\end{block}
 			\begin{block}<+->{Explanation}
 			\begin{itemize}[<+->]
-					\item  $H^{\otimes n}$ : Hadamard gates on all n input qubits (creates superposition).
+					\item  $H^{\otimes n}$ : Hadamard gates on all $n$ input qubits (creates superposition).
 					\item $U_f$ : The quantum oracle.
 					\item Final Hadamards and measurement reveal $\mathbf{s}$.
 			\end{itemize}
@@ -228,11 +228,11 @@
 	\end{linenumbers}
 	\end{frame}
 
-\subsubsection*{Shor's Algorithm}
+\subsubsection*{Breaking RSA}
 \begin{frame}{Shor's Algorithm}
 \begin{linenumbers}
   \begin{block}<+->{Complexity Gain}
-        Classical factoring is very slow (roughly $\mathcal{O}(e^{\sqrt[3]{n}})$). Shor's algorithm is much faster (polynomial, $\mathcal{O}((\log N)^3)$).
+        Classical factoring is very slow (roughly $\mathcal{O}(e^{\sqrt[3]{n}})$). Shor's algorithm is much faster (polynomial, $\mathcal{O}(n^3)$).
   \end{block}
     \begin{block}<+->{Requirements}
         \begin{itemize}[<+->]
