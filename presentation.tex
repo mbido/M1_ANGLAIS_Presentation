@@ -35,11 +35,24 @@
 
 \begin{frame}{Introduction}
 \begin{linenumbers}
-	\begin{itemize}
-		\item Cryptography=TODO
-		\item TODO: secret
-		\item<2->[$\rightarrow$] Science of secret
-	\end{itemize}
+	\begin{block}<+->{What is Cryptography?}
+		\begin{itemize}
+			\item Science of secret $\kappa\rho\nu\pi\tau o\varsigma$ % $\kappa\rho$\u{$\nu$}$\pi\tau\text{\'{o}}\varsigma$ % (κρῠπτός)
+			\item Two complementary parts: cryptography and cryptanalysis
+		\end{itemize}
+	\end{block}
+	\begin{block}<+->{Historically}
+		\begin{itemize}
+			\item Cryptography was about hiding the content of a message % TODO : modify this
+			\item Cryptanalysis want to get this message
+		\end{itemize}
+	\end{block}
+	\begin{block}<+->{Nowadays}
+		\begin{itemize}
+			\item Cryptography: creating protocols to protect a communication
+			\item Cryptanalysis: Measuring the security level of those protocols
+		\end{itemize}
+	\end{block}
 \end{linenumbers}
 \end{frame}
 
@@ -256,17 +269,21 @@
 \end{frame}
 
 \begin{frame}{What is PQ cryptography}
-\begin{linenumbers}
-	\begin{itemize}
-		\item Based on (other) mathematical problems
-		\item Considered unsolvable by a quantum computer
-	\end{itemize}
+	\begin{block}<+->{What it is:}
+		\begin{itemize}
+			\item Based on (other) mathematical problems
+			\item Considered unsolvable by a quantum computer
+			\item<+-> \textbf{And} by classical computers
+		\end{itemize}
+	\end{block}
 
-	What it is not :
-	\begin{itemize}
-		\item Cryptography \textbf{using} quantum technologies
-	\end{itemize}
-\end{linenumbers}
+	\begin{block}<+->{What it is not:}
+		Cryptography \textbf{using} quantum technologies
+		\begin{itemize}
+			\item Many cases where it is unusable
+			\item Considered unreliable
+		\end{itemize}
+	\end{block}
 \end{frame}
 
 \begin{frame}{The problems}
@@ -297,6 +314,7 @@
 				Sphincs+ & Hash \\
 				\hline
 			\end{tabular}
+			\caption{Results from the NIST}
 			\end{table}
 	\end{itemize}
 \end{frame}
@@ -309,20 +327,23 @@
 
 \subsubsection{What is a lattice ?}
 \begin{frame}{Some definitions}
-	\begin{itemize}
-		\item A discret subgroup of $RR^n$
-	\end{itemize}
+	\begin{block}<+->{The unformal definition}
+		A arrangement of points in space, following a regular pattern
+	\end{block}
+	% TODO : Examples
 
-	Like vector spaces, we have :
+	\begin{block}<+->{The (more) formal one}
+		A discret subgroup of $\mathbb{R}^n$, with the euclidean distance
+	\end{block}
 	\begin{itemize}
-		\item Vectors and matrices
-		\item Linear combination
+		\item[$\rightarrow$]<+-> We have vectors, dot/scalar product and matrices
 	\end{itemize}
 \end{frame}
 
 \begin{frame}{Example}
-	\begin{columns}[t]
-	\begin {column}{0.5\textwidth}
+	% \begin{columns}[t]
+	% \begin {column}{0.5\textwidth}
+	\begin{figure}
 		\begin{tikzpicture}
 		\foreach \i in {1, ..., 8, 1.5, ..., 7.5} {
 			\draw [gray, thick] (\i, 0.75) -- (\i, 8.25);
@@ -380,13 +401,15 @@
 
 		\filldraw[black] (1, 8) circle(2pt);
 		\end{tikzpicture}
-	\end{column}
-	\begin{column}{0.45\textwidth}
-		FIXME : Basis:
+		\center
+	\end{figure}
+	% \end{column}
+	% \begin{column}{0.45\textwidth}
+	% 	FIXME : Basis:
 
-		\[\left\{\left(\begin{matrix}3\\2\end{matrix}\right), \left(\begin{matrix}-2\\1\end{matrix}\right)\right\}\]
-	\end{column}
-	\end{columns}
+	% 	\[\left\{\left(\begin{matrix}3\\2\end{matrix}\right), \left(\begin{matrix}-2\\1\end{matrix}\right)\right\}\]
+	% \end{column}
+	% \end{columns}
 \end{frame}
 
 \begin{frame}{Learning with error problem}
