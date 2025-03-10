@@ -110,12 +110,18 @@
 		\end{block}
 		\begin{block}<+->{What do we get ?}
 			We measure $0$ or $1$ with a probability that depends on the state of the qubit.
-			\begin{itemize}[<+->]
-				\item $\ket{0}$ $\rightarrow 0$ (100\%)
-				\item $\ket{1}$ $\rightarrow 1$ (100\%)
-				\item $\ket{+}$ $\rightarrow 0$ (50\%), $1$ (50\%)
-				\item $\ket{-}$ $\rightarrow 0$ (50\%), $1$ (50\%)
-			\end{itemize}
+			\begin{columns}[T,onlytextwidth]
+				\column{0.5\textwidth}
+					\begin{itemize}[<+->]
+						\item $\ket{0}$ $\rightarrow 0$ (100\%)
+						\item $\ket{1}$ $\rightarrow 1$ (100\%)
+					\end{itemize}
+				\column{0.5\textwidth}
+					\begin{itemize}[<+->]
+						\item $\ket{+}$ $\rightarrow 0$ (50\%), $1$ (50\%)
+					\item $\ket{-}$ $\rightarrow 0$ (50\%), $1$ (50\%)
+					\end{itemize}
+			\end{columns}
 		\end{block}
 	\end{linenumbers}
 \end{frame}
@@ -185,7 +191,6 @@
 \end{linenumbers}
 \end{frame}
 
-
 \begin{frame}{Classical Algorithm - General Case}
 	\begin{linenumbers}
 		\begin{block}<+->{Complexity: $\mathcal{O}(n)$}
@@ -203,15 +208,6 @@
 	\end{block}
 \end{linenumbers}
 \end{frame}
-
-% \begin{frame}{Algo Quantique - Slide 2}
-% \begin{linenumbers}
-% 	\begin{quantikz}
-% 		\lstick{} & \gate{H} & \gate[2]{U_f} & \gate{H} & \meter{} & \qw \\
-% 		\lstick{} & \gate{H} &               & \gate{H} & \meter{} & \qw
-% 		\end{quantikz}
-% \end{linenumbers}
-% \end{frame}
 
 \begin{frame}{Quantum Algorithm - Circuit}
 	\begin{linenumbers}
@@ -231,18 +227,6 @@
 	\end{block}
 	\end{linenumbers}
 	\end{frame}
-
-% \subsubsection*{Shor}
-% \begin{frame}{Shor}
-% \begin{linenumbers}
-%     \begin{itemize}[<+->]
-%         \item Gain de complexité :
-%         $\mathcal O(e^b)$ $\rightarrow$ $\mathcal O(b³)$
-%         \item combien de qubit il faut
-%         \item combien de cubit on as
-%     \end{itemize}
-% \end{linenumbers}
-% \end{frame}
 
 \subsubsection*{Shor's Algorithm}
 \begin{frame}{Shor's Algorithm}
