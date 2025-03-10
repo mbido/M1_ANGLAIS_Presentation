@@ -159,66 +159,103 @@
   \tableofcontents[currentsection,currentsubsection]
 \end{frame}
 
-\subsubsection*{Problème B.V}
-\begin{frame}{Problème B.V}
+\subsubsection*{Bernstein-Vazirani Problem}
+\begin{frame}{Bernstein-Vazirani Problem}
 \begin{linenumbers}
-Given the oracle of a function $f$ :
-
-$f : \{0, 1\}^n \rightarrow \{0, 1\}$
-$f(x) = x\cdot s$
-
-Find $s$ in the few request possible.
+  \begin{block}<+->{Problem Definition}
+    Given an oracle for a function $f$:
+    \[ f : \{0, 1\}^n \rightarrow \{0, 1\} \]
+    \[ f(\mathbf{x}) = \mathbf{x} \cdot \mathbf{s} \]
+    where $\mathbf{s}$ is a secret bit string. Find $\mathbf{s}$ with the fewest oracle calls.  ($\cdot$ is the bitwise dot product, XOR sum).
+  \end{block}
 \end{linenumbers}
 \end{frame}
 
-\subsubsection*{Algo classique}
-\begin{frame}{Algo classique - Slide 1}
+\subsubsection*{Classical Algorithm}
+\begin{frame}{Classical Algorithm - Example}
 \begin{linenumbers}
-with $n=2$
-try :
-\begin{itemize}[<+->]
-    \item $f(10) = s_0$
-    \item $f(01) = s_1$
-\end{itemize}
-
-2 requests.
-\end{linenumbers}
-\end{frame}
-
-\begin{frame}{Algo classique - Slide 2}
-\begin{linenumbers}
-in general :
-$\mathcal{O}(n)$ $\rightarrow$ Try every $x$ that contains one bit to 1. At each query, we get the value of that bit in s
-\end{linenumbers}
-\end{frame}
-
-\subsubsection*{Algo Quantique}
-\begin{frame}{Algo Quantique - Slide 1}
-\begin{linenumbers}
-$\mathcal{O}(1)$ $\rightarrow$ Just try every $x$ at the same time.
-
-Not only the $x$ with only one bit at one but every possible $x$.
-\end{linenumbers}
-\end{frame}
-
-\begin{frame}{Algo Quantique - Slide 2}
-\begin{linenumbers}
-\begin{quantikz}
-    \lstick{$\ket{0}$} & \gate{H} & \qw & \qw & \gate{H} & \meter{} \\
-    \lstick{$\ket{0}$} & \gate{H} & \ctrl{-1} & \gate{H} & \qw & \meter{}
-\end{quantikz}
-\end{linenumbers}
-\end{frame}
-
-\subsubsection*{Shor}
-\begin{frame}{Shor}
-\begin{linenumbers}
+  \begin{block}<+->{Example (n=2)}
+    To find $\mathbf{s} = s_0s_1$:
     \begin{itemize}[<+->]
-        \item Gain de complexité :
-        $\mathcal O(e^b)$ $\rightarrow$ $\mathcal O(b³)$
-        \item combien de qubit il faut
-        \item combien de cubit on as
+        \item Query $f(10)$.  Result: $s_0$.
+        \item Query $f(01)$.  Result: $s_1$.
     \end{itemize}
+    Requires 2 queries.
+  \end{block}
+\end{linenumbers}
+\end{frame}
+
+
+\begin{frame}{Classical Algorithm - General Case}
+	\begin{linenumbers}
+		\begin{block}<+->{Complexity: $\mathcal{O}(n)$}
+			We need to isolate each bit of $\mathbf{s}$ by querying with inputs that have a single '1'. This requires $n$ queries for an $n$-bit string.
+		\end{block}
+	\end{linenumbers}
+	\end{frame}
+	
+
+\subsubsection*{Quantum Algorithm}
+\begin{frame}{Quantum Algorithm - Overview}
+\begin{linenumbers}
+	\begin{block}<+->{Complexity: $\mathcal{O}(1)$}
+		The quantum algorithm can find $\mathbf{s}$ with just *one* query.  It uses superposition to query all possible inputs simultaneously.
+	\end{block}
+\end{linenumbers}
+\end{frame}
+
+% \begin{frame}{Algo Quantique - Slide 2}
+% \begin{linenumbers}
+% 	\begin{quantikz}
+% 		\lstick{} & \gate{H} & \gate[2]{U_f} & \gate{H} & \meter{} & \qw \\
+% 		\lstick{} & \gate{H} &               & \gate{H} & \meter{} & \qw
+% 		\end{quantikz}
+% \end{linenumbers}
+% \end{frame}
+
+\begin{frame}{Quantum Algorithm - Circuit}
+	\begin{linenumbers}
+		\begin{block}<+->{Circuit Diagram}
+			\centering
+			\begin{quantikz}
+				\lstick{} & \gate{H} & \gate[2]{U_f} & \gate{H} & \meter{} & \qw \\
+				\lstick{} & \gate{H} &               & \gate{H} & \meter{} & \qw
+				\end{quantikz}
+		\end{block}
+			\begin{block}<+->{Explanation}
+			\begin{itemize}[<+->]
+					\item  $H^{\otimes n}$ : Hadamard gates on all n input qubits (creates superposition).
+					\item $U_f$ : The quantum oracle.
+					\item Final Hadamards and measurement reveal $\mathbf{s}$.
+			\end{itemize}
+	\end{block}
+	\end{linenumbers}
+	\end{frame}
+
+% \subsubsection*{Shor}
+% \begin{frame}{Shor}
+% \begin{linenumbers}
+%     \begin{itemize}[<+->]
+%         \item Gain de complexité :
+%         $\mathcal O(e^b)$ $\rightarrow$ $\mathcal O(b³)$
+%         \item combien de qubit il faut
+%         \item combien de cubit on as
+%     \end{itemize}
+% \end{linenumbers}
+% \end{frame}
+
+\subsubsection*{Shor's Algorithm}
+\begin{frame}{Shor's Algorithm}
+\begin{linenumbers}
+  \begin{block}<+->{Complexity Gain}
+        Classical factoring is very slow (roughly $\mathcal{O}(e^{\sqrt[3]{n}})$). Shor's algorithm is much faster (polynomial, $\mathcal{O}((\log N)^3)$).
+  \end{block}
+    \begin{block}<+->{Requirements}
+        \begin{itemize}[<+->]
+            \item Requires a large number of high-quality (low-error) qubits (roughly $2n$ for an $n$-bit number).
+            \item  We currently don't have quantum computers large and stable enough to break practical RSA encryption.
+        \end{itemize}
+    \end{block}
 \end{linenumbers}
 \end{frame}
 
