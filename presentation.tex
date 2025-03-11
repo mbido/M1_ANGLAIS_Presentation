@@ -37,20 +37,20 @@
 \begin{linenumbers}
 	\begin{block}<+->{What is Cryptography?}
 		\begin{itemize}
-			\item Science of secret $\kappa\rho\nu\pi\tau o\varsigma$ % $\kappa\rho$\u{$\nu$}$\pi\tau\text{\'{o}}\varsigma$ % (κρῠπτός)
+			\item Science of secret ($\kappa\rho\nu\pi\tau o\varsigma$) % $\kappa\rho$\u{$\nu$}$\pi\tau\text{\'{o}}\varsigma$ % (κρῠπτός)
 			\item Two complementary parts: cryptography and cryptanalysis
 		\end{itemize}
 	\end{block}
 	\begin{block}<+->{Historically}
 		\begin{itemize}
-			\item Cryptography was about hiding the content of a message % TODO : modify this
-			\item Cryptanalysis want to get this message
+			\item Cryptography: hide the content of a message
+			\item Cryptanalysis: get the content of this message
 		\end{itemize}
 	\end{block}
 	\begin{block}<+->{Nowadays}
 		\begin{itemize}
-			\item Cryptography: creating protocols to protect a communication
-			\item Cryptanalysis: Measuring the security level of those protocols
+			\item Cryptography: Create protocols to protect a communication
+			\item Cryptanalysis: Measure the security level of those protocols
 		\end{itemize}
 	\end{block}
 \end{linenumbers}
@@ -289,19 +289,22 @@
 		Cryptography \textbf{using} quantum technologies
 		\begin{itemize}
 			\item Many cases where it is unusable
-			\item Considered unreliable
+			\item Deprecated from governmental institutions (NSA, ENISA\footnote{\url{doi.org/10.2824/92307}}, ANSSI)
 		\end{itemize}
 	\end{block}
 \end{frame}
 
-\begin{frame}{The problems}
-	\begin{itemize}
-		\item Codes
-		\item Hash functions
-		\item Multivariates polynomials systems
-		\item Isogenies
-		\item {\color<2>{red} Lattices}
-	\end{itemize}
+\begin{frame}{The PQ problems}
+	\begin{block}{Families}
+		\begin{itemize}
+			\item Codes
+			\item Hash functions % \footnote{Signature only}
+			\item Isogenies
+			\item Multivariates polynomials systems
+			\item {\color<2>{red} Lattices}
+%			\item Zero-knowledge proof\footnotemark[\value{footnote}]
+		\end{itemize}
+	\end{block}
 \end{frame}
 
 \begin{frame}{Why lattices ?}
@@ -327,7 +330,7 @@
 	\end{itemize}
 \end{frame}
 
-\subsection{Lattice cryptography}
+\subsection{Lattice-based cryptography}
 \begin{frame}
   \frametitle{Outline}
   \tableofcontents[currentsection,currentsubsection]
@@ -344,7 +347,7 @@
 		A discret subgroup of $\mathbb{R}^n$, with the euclidean distance
 	\end{block}
 	\begin{itemize}
-		\item[$\rightarrow$]<+-> We have vectors, dot/scalar product and matrices
+		\item[$\Rightarrow$]<+-> We have vectors, dot/scalar product and matrices
 	\end{itemize}
 \end{frame}
 
