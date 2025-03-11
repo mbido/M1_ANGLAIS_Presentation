@@ -12,6 +12,11 @@
 \usepackage{lineno}
 \usepackage{multirow}
 
+\usepackage{algorithm} % write pseudocode, suggested by IEEEtran instead of algorithm2e
+\usepackage{algpseudocode}
+
+\providecommand{\floor}[1]{\left \lfloor #1 \right \rfloor }
+
 \title{Quantum Computing and Cryptography}
 \author{Damien, Théo, Matthieu}
 \institute{}
@@ -35,7 +40,7 @@
 
 \begin{frame}{Introduction}
 \begin{linenumbers}
-	\begin{block}<+->{What is Cryptography?}
+	\begin{block}<+->{What is Cryptology?}
 		\begin{itemize}
 			\item Science of secret ($\kappa\rho\nu\pi\tau o\varsigma$) % $\kappa\rho$\u{$\nu$}$\pi\tau\text{\'{o}}\varsigma$ % (κρῠπτός)
 			\item Two complementary parts: cryptography and cryptanalysis
@@ -376,7 +381,7 @@
 
 \begin{frame}{Why lattices ?}
 	\begin{itemize}
-		\item Well spread
+		\item Well spread (One of the most studied)
 		\item Good results
 			\begin{table}[h!]
 			\begin{tabular}{|c|c|}
@@ -534,13 +539,50 @@
 	\]
 \end{frame}
 
+\begin{frame}{Regev's algorithm}
+	\begin{algorithm}[H]
+		\caption{Encryption}\label{algo:regev}
+		\begin{algorithmic}
+			\Require $M\in\{0, 1\}$, $m$ equations $a_i \cdot s + e_i = b_i$
+			\State Choose $Sel\subseteq[\![0, m-1]\!]$ randomly
+			\State $c_1 \gets \displaystyle\sum_{i\in Sel} a_i$
+			\State $c_2 \gets \left(\displaystyle\sum_{i\in Sel} b_i\right) + abc$
+			\State \Return $(c_1, c_2)$
+		\end{algorithmic}
+	\end{algorithm}
+		$M = 1$, $Sel = (0, 0, 1, 0, 0, 1)$
+		\begin{align*}
+			(4, 7, 6, 7), &\ 6 \\
+			+ (2, 9, 9, 1), &\ 9 + 1 \times 6 \\
+			= (6, 3, 2, 8), &\ 8
+		\end{align*}
+\end{frame}
+
+\begin{frame}{Regev's algorithm (cont'd)}
+	\begin{algorithm}[H]
+		\caption{Decryption}\label{algo:regev}
+		\begin{algorithmic}
+			\State $x \gets c_2 - c_1 \cdot s = \left(\displaystyle\sum_{i\in Sel} e_i\right) + M\cdot\frac{q}{2}$ % \left(\displaystyle\sum_{i\in S} a_i \cdot s\right) + M\cdot\frac{q}{2} = M\cdot\frac{q}{2}$
+			\If{$x\in \left[\floor{\frac{q}{4}}, \floor{\frac{3q}{4}} - 1\right]$}
+				\State \Return 1
+			\Else
+				\State \Return 0
+			\EndIf
+		\end{algorithmic}
+	\end{algorithm}
+	\begin{itemize}
+		\item $8 - (6, 3, 2, 8) \cdot (6, 5, 6, 2) = 8 - 1 = 7$
+		\item $7 \in [3, 8] \rightarrow 1$
+	\end{itemize}
+\end{frame}
+
 \begin{frame}{(Fully) homomorphic encryption}
 	\begin{itemize}
 		\item We can evaluate (or compile\footnote{\url{https://heir.dev/}}) a circuit on encrypted data
 		\item<2-> Two operations: $+$ and $\cdot$ (or $\times$)
 	\end{itemize}
 	\begin{block}<3->{$eval$}
-		For a function $f : P \times P \rightarrow P$ and encrypted data $C_1$ and $C_2$ :
+		For a function $f : P \times P \rightarrow P$ and encrypted data $C_1$ and $C_2$:
 		\[eval(f, C_1, C_2) = Enc(f(Dec(C_1), Dec(C_2)))\]
 	\end{block}
 	\begin{itemize}
@@ -549,24 +591,25 @@
 	\end{itemize}
 \end{frame}
 
-\subsection{Limits of PQ cryptography}
-\begin{frame}
-  \frametitle{Outline}
-  \tableofcontents[currentsection,currentsubsection]
-\end{frame}
-\begin{frame}{Sizes of the keys and data}
-	\begin{tabular}{|c|c|}
-		\hline
-		TODO & \\
-		\hline
-	\end{tabular}
-\end{frame}
+% subsection{Limits of PQ cryptography}
+% begin{frame}
+%  \frametitle{Outline}
+%  \tableofcontents[currentsection,currentsubsection]
+% end{frame}
+% begin{frame}{Sizes of the keys and data}
+%    \begin{tabular}{|c|c|}
+%    	\hline
+%    	TODO & \\
+%    	\hline
+%    \end{tabular}
+% end{frame}
+% 
+% begin{frame}{Not necessarly robust to classical computer}
+%    \begin{itemize}
+%    	\item Example : Supersingular isogenies Diffie-Hellman key exchange
+%    \end{itemize}
+% end{frame}
 
-\begin{frame}{Not necessarly robust to classical computer}
-	\begin{itemize}
-		\item Example : Supersingular isogenies Diffie-Hellman key exchange
-	\end{itemize}
-\end{frame}
 \section{Conclusion}
 \begin{frame}
   \frametitle{Outline}
