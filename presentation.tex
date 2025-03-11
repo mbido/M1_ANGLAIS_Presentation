@@ -159,10 +159,18 @@
 
 \begin{frame}{Hadamard gate}
 	\begin{block}<+->{H gate}
-			\begin{itemize}
-					\item $H\ket{0} \rightarrow \ket{+}$
-					\item $H\ket{1} \rightarrow \ket{-}$
-			\end{itemize}
+			\begin{columns}[T,onlytextwidth]
+				\column{0.5\textwidth}
+					\begin{itemize}
+						\item $H\ket{0} \rightarrow \ket{+}$
+						\item $H\ket{1} \rightarrow \ket{-}$
+					\end{itemize}
+				\column{0.5\textwidth}<+->
+					\begin{itemize}
+						\item $H\ket{+} \rightarrow \ket{0}$
+						\item $H\ket{-} \rightarrow \ket{1}$
+					\end{itemize}
+			\end{columns}
 	\end{block}
 	\begin{block}<+->{Circuit representation}
 			\centering
@@ -196,8 +204,8 @@
   \begin{block}<+->{Example (n=2)}
     To find $\mathbf{s} = s_0s_1$:
     \begin{itemize}[<+->]
-        \item Query $f(10)$.  Result: $s_0$.
-        \item Query $f(01)$.  Result: $s_1$.
+        \item Query $f(10) = 1 \cdot s_0 + 0 \cdot s_1 = s_0$
+        \item Query $f(01) = 0 \cdot s_0 + 1 \cdot s_1 = s_1$
     \end{itemize}
     Requires 2 queries.
   \end{block}
@@ -206,7 +214,7 @@
 
 \begin{frame}{Classical Algorithm - General Case}
 	\begin{linenumbers}
-		\begin{block}<+->{Complexity: $\mathcal{O}(n)$}
+		\begin{block}<+->{Classical complexity: $\mathcal{O}(n)$}
 			We need to isolate each bit of $\mathbf{s}$ by querying with inputs that have a single '1'. This requires $n$ queries for an $n$-bit string.
 		\end{block}
 	\end{linenumbers}
@@ -216,7 +224,7 @@
 \subsubsection*{Quantum Algorithm}
 \begin{frame}{Quantum Algorithm - Overview}
 \begin{linenumbers}
-	\begin{block}<+->{Complexity: $\mathcal{O}(1)$}
+	\begin{block}<+->{Quantum complexity: $\mathcal{O}(1)$}
 		The quantum algorithm can find $\mathbf{s}$ with just \textbf{one} query.  It uses superposition to query all possible inputs simultaneously.
 	\end{block}
 \end{linenumbers}
@@ -233,7 +241,7 @@
 		\end{block}
 			\begin{block}<+->{Explanation}
 			\begin{itemize}[<+->]
-					\item  $H^{\otimes n}$ : Hadamard gates on all $n$ input qubits (creates superposition).
+					\item  $H$ : Hadamard gates on all $n$ input qubits (creates superposition).
 					\item $U_f$ : The quantum oracle.
 					\item Final Hadamards and measurement reveal $\mathbf{s}$.
 			\end{itemize}
