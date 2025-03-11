@@ -325,6 +325,7 @@
 				Sphincs+ & Hash \\
 				\hline
 			\end{tabular}
+			\center
 			\caption{Results from the NIST}
 			\end{table}
 	\end{itemize}
@@ -424,17 +425,60 @@
 \end{frame}
 
 \begin{frame}{Learning with error problem}
-	TODO
+	\begin{block}{One equation}
+		For\begin{itemize}
+			\item a secret vector $s$,
+			\item a public one $a$,
+			\item a small error $e$ and
+			\item a public result $b$
+		\end{itemize} solve $ a \cdot s + e = b$
+	\end{block}
+	% sk = (6, 5, 6, 2)
+	% LWE:
+	% [ 9  5  7 10] . sk + 11 = 9
+	% [ 7 10  5  3] . sk + 12 = 10
+	% [ 4  7  6  7] . sk + 1 = 6
+	% [ 7  8  3 11] . sk + 0 = 5
+	% [ 2  2 11  1] . sk + 1 = 0
+	% [ 2  9  9  1] . sk + 0 = 9
+	% S = (0, 0, 1, 0, 0, 1)
+	% c = ((6, 3, 2, 8), 2)
+	% x = 1
+	% m = 0
+	\pause
+	Example in $\mathbb{Z}/13\mathbb{Z}$
+	\[
+		\left[\begin{matrix}
+			9 & 5 & 7 & 10 \\
+			7 & 10 & 5 & 3 \\
+			4 & 7 & 6 & 7 \\
+			7 & 8 & 3 & 11 \\
+			2 & 2 & 11 & 1 \\
+			2 & 9 & 9 & 1 \\
+		\end{matrix}\right]
+		\times
+		\left[\begin{matrix}
+			6 \\ 5 \\ 6 \\ 2
+		\end{matrix}\right]
+		+
+		\left[\begin{matrix} -1 \\ -1 \\ 1 \\ 0 \\ 1 \\ 0 \end{matrix}\right]
+		=
+		\left[\begin{matrix} 10 \\ 10 \\ 6 \\ 5 \\ 0 \\ 9 \end{matrix}\right]
+	\]
 \end{frame}
 
 \begin{frame}{(Fully) homomorphic encryption}
 	\begin{itemize}
-		\item Based on lattices (variant of LWE problem)
-		\item<2-> We can evaluate a circuit (operations) on encrypted data
-		\item<2-> Two operations : $+$ and $\cdot$, forms a ring
-		\item<3-> We can evaluate (or compile) a function $f : P \times P \rightarrow P$ on encrypted data $C_1$ and $C_2$ :
-			\[eval(f, C_1, C_2) = Enc(f(Dec(C_1), Dec(C_2)))\]
-		\item<4-> Used to manipulate private data (e.g. Medical data, data science)
+		\item We can evaluate (or compile\footnote{\url{https://heir.dev/}}) a circuit on encrypted data
+		\item<2-> Two operations: $+$ and $\cdot$ (or $\times$)
+	\end{itemize}
+	\begin{block}<3->{$eval$}
+		For a function $f : P \times P \rightarrow P$ and encrypted data $C_1$ and $C_2$ :
+		\[eval(f, C_1, C_2) = Enc(f(Dec(C_1), Dec(C_2)))\]
+	\end{block}
+	\begin{itemize}
+		\item<4-> Used to manipulate private data (e.g. Medical data, data science, Machine learning)
+		\item<5-> Based on lattices (variant of LWE problem)
 	\end{itemize}
 \end{frame}
 
