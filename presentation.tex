@@ -366,6 +366,25 @@
 	\end{block}
 \end{frame}
 
+\begin{frame}{PQ cryptography now}
+		\includegraphics[width=0.1\textwidth]{NIST_logo.pdf}
+		\centering
+	\begin{block}{Standardization done by the NIST}
+		\begin{itemize}
+			\item 2016: Call for proposals for new standards
+			\item 3 rounds of selection
+			\item July 5, 2022: Announce of the first winners: 1 key encapsulation and 3 signatures protocols
+			\item and a fourth round for PKE/KEM
+			\item August 13, 2024: Specifications published
+			\item March 11, 2025: Winner from the fourth round: 1 public key encryption
+		\end{itemize}
+	\end{block}
+
+	Can be used in hybrid mode
+
+	%i.e. With a pre-quantum protocol
+\end{frame}
+
 \begin{frame}{The PQ problems}
 	\begin{block}{Families}
 		\begin{itemize}
@@ -389,6 +408,7 @@
 				\multicolumn{2}{|c|}{Encryption/Key encapsulation} \\
 				\hline
 				Crystals-Kyber & Lattices \\
+				Hamming Quasi-Cyclic\footnote{From fourth round} & Codes \\
 				\hline
 				\multicolumn{2}{|c|}{Signatures} \\
 				\hline
@@ -415,6 +435,11 @@
 		A arrangement of points in space, following a regular pattern
 	\end{block}
 	% TODO : Examples
+	\begin{figure}[H]
+		\includegraphics[width=0.2\textwidth]{Sodium-chloride-3D-ionic.png}
+		\center
+		\caption{Crystal structure of NaCl}
+	\end{figure}
 
 	\begin{block}<+->{The (more) formal one}
 		A discret subgroup of $\mathbb{R}^n$, with the euclidean distance
@@ -541,28 +566,28 @@
 
 \begin{frame}{Regev's algorithm}
 	\begin{algorithm}[H]
-		\caption{Encryption}\label{algo:regev}
+		\caption{Encryption}\label{algo:regev_enc}
 		\begin{algorithmic}
 			\Require $M\in\{0, 1\}$, $m$ equations $a_i \cdot s + e_i = b_i$
 			\State Choose $Sel\subseteq[\![0, m-1]\!]$ randomly
 			\State $c_1 \gets \displaystyle\sum_{i\in Sel} a_i$
-			\State $c_2 \gets \left(\displaystyle\sum_{i\in Sel} b_i\right) + abc$
+			\State $c_2 \gets \left(\displaystyle\sum_{i\in Sel} b_i\right) + M \times \floor{\frac{q}{2}}$
 			\State \Return $(c_1, c_2)$
 		\end{algorithmic}
 	\end{algorithm}
-		$M = 1$, $Sel = (0, 0, 1, 0, 0, 1)$
+		$M = 1$, $Sel = \{2, 5\}$
 		\begin{align*}
 			(4, 7, 6, 7), &\ 6 \\
-			+ (2, 9, 9, 1), &\ 9 + 1 \times 6 \\
-			= (6, 3, 2, 8), &\ 8
+			+ (2, 9, 9, 1), &\ 9 \\
+			= (6, 3, 2, 8), &\ 2 + 1 \times 6 = 8
 		\end{align*}
 \end{frame}
 
 \begin{frame}{Regev's algorithm (cont'd)}
 	\begin{algorithm}[H]
-		\caption{Decryption}\label{algo:regev}
+		\caption{Decryption}\label{algo:regev_dec}
 		\begin{algorithmic}
-			\State $x \gets c_2 - c_1 \cdot s = \left(\displaystyle\sum_{i\in Sel} e_i\right) + M\cdot\frac{q}{2}$ % \left(\displaystyle\sum_{i\in S} a_i \cdot s\right) + M\cdot\frac{q}{2} = M\cdot\frac{q}{2}$
+			\State $x \gets c_2 - c_1 \cdot s = \left(\displaystyle\sum_{i\in Sel} e_i\right) + M\times\floor{\frac{q}{2}}$ % \left(\displaystyle\sum_{i\in S} a_i \cdot s\right) + M\cdot\frac{q}{2} = M\cdot\frac{q}{2}$
 			\If{$x\in \left[\floor{\frac{q}{4}}, \floor{\frac{3q}{4}} - 1\right]$}
 				\State \Return 1
 			\Else
@@ -578,8 +603,9 @@
 
 \begin{frame}{(Fully) homomorphic encryption}
 	\begin{itemize}
-		\item We can evaluate (or compile\footnote{\url{https://heir.dev/}}) a circuit on encrypted data
+		\item We can evaluate a circuit on encrypted data
 		\item<2-> Two operations: $+$ and $\cdot$ (or $\times$)
+		\item<2-> Obtained by transforming the function to apply with a compiler%\footnote{\url{https://heir.dev/}}
 	\end{itemize}
 	\begin{block}<3->{$eval$}
 		For a function $f : P \times P \rightarrow P$ and encrypted data $C_1$ and $C_2$:
